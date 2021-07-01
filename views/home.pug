@@ -1,0 +1,60 @@
+//- doctype html 
+
+//- mixin nav__links--item(link, linkName)
+//-     li.nav__links--item
+//-         a(href=`${link}`)= `${linkName}`
+
+//- mixin nav__link--item-right(link, icon)
+//-     li.nav__links--item
+//-         a(href=`https://${link}`)
+//-             svg.card__icon
+//-                 use(xlink:href=`/icons/sprite.svg#icon-${icon}`)
+
+//- mixin footer-items(link, text)
+//-     li.footer--links
+//-         a(href=`${link}`)= text
+
+
+//- html 
+//-     head
+//-         meta(charset='UTF-8')
+//-         meta(name='viewport' content='width=device-width, initial-scale=1.0')
+//-         link(href="https://fonts.googleapis.com/css2?family=Norican&family=Nunito:wght@200;400;700&family=Padauk&display=swap" rel="stylesheet")
+//-         link(rel='stylesheet' href="/css/style.css")
+//-         link(rel="shortcut icon", href="/img/favicon.png", type="image/png")
+//-         title= `HOME   |  JEDAH.XYZ`
+
+//-     body.body-home
+//-         section.section__main.home
+//-             img(src='/icons/home-1.png')
+
+//-         section.section--section
+//-             header.header
+//-                 nav
+//-                     ul
+//-                         .texts
+//-                             p: a(href='/') JEDIDIAH
+//-                             +nav__links--item('/', 'Home')
+//-                             +nav__links--item('/faq', 'FAQ')
+//-                             +nav__links--item('/about', 'ABOUT')
+//-                         .social_links
+//-                             +nav__link--item-right('twitter.com/j4jedah', 'twitter-with-circle')
+//-                             +nav__link--item-right('facebook.com/j4jedah', 'facebook-with-circle')
+//-                             +nav__link--item-right('github.com/j4jedah', 'github')
+//-                             +nav__link--item-right('jedah.xyz/j4jedah', 'jedahxyz')
+
+//-             section.main--contents 
+
+//-                 .jumbo__text
+//-                     h1 Hello,
+//-                     h2 My name is JEDIDIAH
+//-                     h3 I have over 2000 links, resources, challenges, and project ideas.... all for you.
+//-                     h4: a(href='/inspire-creativtiy') The goal is to inspire creativity and enrich life
+//-                     a(href="/create-account").btn__home--cta Get started &nbsp; >>
+
+//-                 footer.footer   
+//-                     ul
+//-                         +footer-items('/login', 'Log me in')
+//-                         +footer-items('/login?ref=user02929sk309e&reward=2', 'Our killer aim')
+//-                         +footer-items('https://github.com/j4jedah', 'Developer')
+//-                         +footer-items('mailto:j4jedah@jedah.xyz', 'Mail')

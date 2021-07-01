@@ -1,0 +1,108 @@
+doctype html
+
+mixin user__link--items(type, link, name, mode) 
+  li
+    if type === 'text'
+      a(class=`listItemClass` href=`${link}`)= name
+    else if type  === 'select'
+      select.select--occupation
+        if mode === 'resource'
+          option(value="Developer") Developer
+          option(value="Designer") Designer
+          option(value="General") General
+
+        else if mode === 'controller'
+          option(value="popularity") Popularity
+          option(value="relevance") Relevance
+          option(value="latest") Latest
+
+        else
+          option(value="Developer") Edit my account
+          option(value="Designer") My purchase
+          option(value="posts") My posts
+          option(value="bookmarks") My bookmarks
+          option(value="more") More
+
+    else
+      input(type="text" name=`${name}` placeholder=`${name}`)
+
+mixin stats(name, count, link)
+  .stats__item: a(href=`${link}`)
+    .stats__count= count
+    .stats__name= name
+
+html
+ 
+
+  head
+    block head
+      meta(charset='UTF-8')
+      meta(name='viewport' content='width=device-width, initial-scale=1.0')
+      link(rel='stylesheet' href='/css/style.css')
+      link(rel='shortcut icon' type='image/png' href='/img/favicon.png')
+      link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
+      title Natours | #{title}
+
+  body#body-home.body--home
+    // HEADER
+    .user__header 
+      ul.user__header--header
+        +user__link--items('text', '/archive', 'Archive')
+        +user__link--items('select', '/', ' ', 'resource')
+        +user__link--items( '', '/q?', 'lens ')
+        +user__link--items( 'text', '/create-resource', 'Create ')
+        +user__link--items( 'select', '/', 'Account ')
+
+    // CONTENT
+    .contents
+      .left__fixed 
+        +user__link--items('text', '/archive', 'Home')
+        +user__link--items('text', '/archive', 'Tools')
+        +user__link--items('text', '/archive', 'Resources')
+        +user__link--items('text', '/archive', 'Courses')
+        +user__link--items('text', '/archive', 'Settings')
+        +user__link--items('text', '/archive', 'Stats')
+        +user__link--items('text', '/archive', 'Ads and Manager')
+        +user__link--items('text', '/archive', 'More')
+  
+      .main__contents
+        .main__contents--cover
+          .cover__image 
+            img(src='/img/users/default-cover.jpeg')
+
+        .main__contents--user-profile
+          figure.user-profile--figure
+            img(src='img/users/default-photo.png')
+            p.user-full-name Mike Adebisi
+            p.occupation Mern Developer
+
+          .user-profile--bio 
+            p.user-bio I am a Web and App Developer from Lagos, Nigeria. Currently learning MERN STACK, C++, Python and Ethical Hacking. Say me a prayer.
+
+          .user-profile--stats 
+            .stats--left
+              +stats('Reputation', `${53270}`, '#')
+              +stats('Stars', `${3270}`, '#')
+              +stats('Followers', `${26.3}m`, '#')
+              +stats('Following', `${21}`, '#')
+            .stats--right
+              if user.verified
+                p.btn.btn-promote Promote
+                p.btn.btn-learn Learn
+              else
+                p.btn-btn-premium Go pro
+                p.btn.btn-premium Get Access
+              p.btn.btn-more ... 
+
+        .main__contents--posts
+          .posts-head
+            .posts-controller 
+              p.latest Latest Trick
+            .posts-controller
+              small Sort by
+              +user__link--items('select', '/', ' ', 'controller')
+
+          block posts
+    // FOOTER
+    
+

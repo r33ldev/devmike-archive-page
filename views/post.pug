@@ -1,0 +1,15 @@
+extends base
+
+block posts 
+
+    .app-card
+        span
+            img(src='https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/60d33182c3989fc24c4e461d_23-online-business-ideas-thriving-in-the-creator-economy_bloghero-p-1600.jpeg')
+            
+        .app-card__subtext 22 of the Best online business ideas for creators
+        .app-card-buttons
+            if user.verified
+                a(href='https://webflow.com/blog/online-business-ideas' target='_blank'): button.content-button.status-button Read more
+            else 
+                a: button.content-button.status-button.premium(data-user-id=`${user.id}`) Go pro to read
+            .menu

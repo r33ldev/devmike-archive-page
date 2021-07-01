@@ -1,0 +1,76 @@
+doctype html
+
+mixin footer-links(link, text)
+    li.footer--link
+        a(href=`${link}`)= text   
+
+html 
+    head
+        block head
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        link(href="https://fonts.googleapis.com/css2?family=Norican&family=Nunito:wght@200;400;700&family=Padauk&display=swap" rel="stylesheet")
+        link(rel='stylesheet' href="/css/style.css")
+        link(rel="shortcut icon", href="/img/favicon.png", type="image/png")
+        title= `${title}   |  JEDAH.XYZ`
+
+     
+    body
+        main.main
+            section.content
+                .content--left
+                    .jedah-logo
+                        img(src='/img/favicon.png')
+                        .text
+                            div JEDAH RULE 
+                            div the world
+                    .jedah-text
+                        p One Kingdom to rule them all -
+                        p Together, we can make your dream  come true!
+                        button.btn.btn-learn Get started 
+                            span: svg(xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16")
+                                    path(fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z")
+                                    path(fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z")
+                    .jedah-footer
+                        ul.footers
+                            +footer-links('/', 'Home')
+                            +footer-links('/about', 'About Jedah')
+                            +footer-links('/tou', 'Terms of Use')
+
+                .content--right
+                    .hamburger
+                        svg(xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16")
+                            path(fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z")
+
+                    .jedah--form
+                        p.form--text Login to your account to continue <br> experiencing the better side of <br> life with @J4JEDAH.
+                        form.signup-form(style="margin-top:5rem" action="post")
+                            .form-group 
+                                //- svg(xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16")
+                                //-     path(d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z")
+                                //-     path(fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z")
+                                //- input(type="text" name="username" id="username" placeholder="PROVIDE YOUR USERNAME")
+
+                            .form-group 
+                                svg(xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-open" viewBox="0 0 16 16")
+                                    path(d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.818l5.724 3.465L8 8.917l1.276.766L15 6.218V5.4a1 1 0 0 0-.53-.882l-6-3.2zM15 7.388l-4.754 2.877L15 13.117v-5.73zm-.035 6.874L8 10.083l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738zM1 13.117l4.754-2.852L1 7.387v5.73zM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765l6-3.2z")
+                                input(type="email" name="email" id="email" placeholder="PROVIDE YOUR EMAIL" autofocus="true")
+
+                            .form-group 
+                                svg(xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16")
+                                    path(d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z")
+                                input(type="password" name="password" id="password" placeholder="PROVIDE YOUR PASSWORD")
+                                svg(id="toggle" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16")
+                                    path(d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z")
+                                    path(d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z")
+
+                    .jedah-footer
+                        button.btn#btn-rock Let's rock 
+                            span: svg(xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16")
+                                    path(fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z")
+                                    path(fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z")
+                        p.login: a(href='/create-account') I am yet to have account
+
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js") 
+    script(src="https://js.stripe.com/v3/") 
+    script(src="/sign.js") 

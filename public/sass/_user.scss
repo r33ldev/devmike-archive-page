@@ -1,0 +1,177 @@
+$color-primary: #d36c17;
+$color-primary-light: #0a1d37;
+$color-white: #f9f9f9;
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  section.content {
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
+    display: grid;
+    grid-template-columns: 3fr 2.2fr;
+    border-radius: 0.4rem;
+    overflow: hidden;
+  }
+
+  .content--left {
+    padding: 4rem 10rem;
+    background-image: linear-gradient(#1b6f9a, #1b6f9ae6), url('/img/bg-01.jpg');
+    background-position: center;
+    background-size: cover;
+    display: grid;
+    //   grid-template-rows: 10rem minmax(20rem, min-content) 1fr;
+    grid-template-rows: 10rem minmax(34rem, min-content) 10rem;
+    position: relative;
+
+    .jedah-logo {
+      display: flex;
+      justify-self: start;
+      cursor: pointer;
+      font-size: 1rem;
+
+      img {
+        height: 4rem;
+        width: 4rem;
+      }
+      .text {
+        margin-top: 0.5rem;
+        div {
+          &:nth-child(1) {
+            font-size: 1.3rem;
+          }
+          font-family: 'Nunito', sans-serif;
+
+          text-transform: capitalize !important;
+          padding-left: 1rem;
+        }
+      }
+    }
+
+    .jedah-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 2.3rem;
+
+      p:not(:last-child) {
+        padding-bottom: 2rem;
+      }
+      .btn-learn {
+        margin-top: 2rem;
+        display: flex;
+        align-self: flex-start;
+        background-color: $color-white;
+        color: $color-primary-light;
+        cursor: pointer;
+        justify-self: end;
+        padding: 1rem 3rem;
+        outline: none;
+        border: 0.1rem solid $color-primary;
+        border-radius: 0.5rem;
+
+        span {
+          margin-left: 3rem;
+        }
+      }
+    }
+  }
+  .jedah-footer {
+    display: flex;
+    align-items: self-end;
+    align-content: flex-end;
+    flex-wrap: wrap;
+    ul {
+      width: 60%;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: self-end;
+
+      li {
+        a:link,
+        a:active,
+        a:visited {
+          color: $color-primary;
+          font-size: 1.2rem;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .content--right {
+    background-color: $color-white;
+    color: $color-primary-light;
+    padding: 4rem 7rem;
+    display: grid;
+    grid-template-rows: 10rem minmax(20rem, min-content) 1fr;
+    position: relative;
+
+    .hamburger {
+      display: flex;
+      justify-self: end;
+      cursor: pointer;
+    }
+
+    .jedah--form {
+      p.form--text {
+        font-size: 2.2rem;
+        padding: 2rem 0;
+      }
+
+      form.signup-form {
+        .form-group {
+          display: flex;
+          align-items: center;
+          position: relative;
+          input {
+            border: none;
+            outline: 0;
+            background-color: transparent;
+            margin: 1rem 1rem;
+            padding: 1rem 0;
+            width: 80%;
+            border-bottom: 0.2rem solid $color-primary;
+            text-align: left;
+            color: #5a5656;
+          }
+        }
+      }
+    }
+
+    .jedah-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: self-end;
+      align-items: baseline;
+      flex-wrap: wrap;
+
+      button {
+        background-color: $color-primary;
+        margin-top: 2rem;
+        color: $color-primary-light;
+        cursor: pointer;
+        padding: 1rem 2.5rem;
+        outline: none;
+        border: 0.1rem solid $color-primary;
+        border-radius: 0.5rem;
+
+        display: flex;
+        //   align-self: flex-start;
+
+        span {
+          margin-left: 3rem;
+        }
+      }
+      p.login {
+        border-bottom: 0.1rem solid $color-primary-light;
+        font-size: 1.2rem;
+        padding-bottom: 0.3rem;
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+@import './user';
+@import './user-profile';
+@import './home';
+@import './base';
+
+$color-primary: #0a1d37;
+$color-primary-light: #0a1d37;
+$color-white: #f9f9f9;
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  // background-color: #1b6f9a;
+  font-family: 'Nunito', sans-serif;
+  color: $color-white;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+#toggle {
+  fill: $color-primary;
+  cursor: pointer;
+  position: absolute;
+  top: 22px;
+  right: 12.5%;
+}
+
+.alert {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  z-index: 9999;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-align: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 1.6rem 15rem;
+  -webkit-box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+}
+.alert--success {
+  background-color: #0a1d37;
+}
+.alert--error {
+  background-color: $color-primary;
+}
+
+// to be copied to base.scss later on
+
+// Base Scss Declarations

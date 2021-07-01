@@ -1,0 +1,85 @@
+//- doctype html 
+//- html 
+//-     head
+//-         meta(charset='UTF-8')
+//-         meta(name='viewport' content='width=device-width, initial-scale=1.0')
+//-         link(href="https://fonts.googleapis.com/css2?family=Norican&family=Nunito:wght@200;400;700&family=Padauk&display=swap" rel="stylesheet")
+//-         link(rel='stylesheet' href="/css/style.css")
+//-         link(rel="shortcut icon", href="/img/favicon.png", type="image/png")
+//-         title= `${user.name.toUpperCase()}   |  JEDAH.XYZ`
+//-         //- `${/username.split(' ')[0]}`
+    
+//-     body 
+        
+//-         section.main
+//-             section.contents
+//-                 section.cover
+//-                     button.btn#btn-logout Log out
+//-                     .cover-pic
+//-                         a(href='/changeProfile'): img(src='/img/users/user-1-2.jpg')
+//-                 section.profile
+//-                     section.user
+//-                         figure.user--profile
+//-                             a(href='/me'): img(src='/img/users/user-1-1.jpg')
+//-                             p.name: a(href='/me')= user.name
+//-                                 span: svg(xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16")
+//-                                         path(d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z")
+
+
+//-                             p.username: a(href='/')= user.username
+//-                             p.role= user.occupation
+//-                         .user--profile__stats
+//-                             .reputation
+//-                                 .reputation--number.stats-n 23,505
+//-                                 .reputation--title Reputations
+//-                             .star
+//-                                 .star--number.stats-n 5,370
+//-                                 .star--title Stars
+//-                             .followers
+//-                                 .followers--number.stats-n 23.4M
+//-                                 .followers--title Followers
+//-                             .following
+//-                                 .follwing--number.stats-n 22
+//-                                 .following--title Followings
+//-                         .user--bio
+//-                             p.user--bio__text= user.bio
+//-                         .user--social__links
+//-                             a(href='#' class='fb-icon'): svg(xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16")
+//-                                 path(d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z")
+//-                             a(href='#' class='tw-icon'): svg(xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16")
+//-                                 path(d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z")
+//-                             a(href='#' class='git-icon'): svg(xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16")
+//-                                 path(d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z")
+//-                             a(href='#' class='yt-icon'): svg(xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16")
+//-                                 path(d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z")
+//-                             a(href='#' class='ds-icon'): svg(xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-discord" viewBox="0 0 16 16")
+//-                                 path(d="M6.552 6.712c-.456 0-.816.4-.816.888s.368.888.816.888c.456 0 .816-.4.816-.888.008-.488-.36-.888-.816-.888zm2.92 0c-.456 0-.816.4-.816.888s.368.888.816.888c.456 0 .816-.4.816-.888s-.36-.888-.816-.888z")
+//-                                 path(d="M13.36 0H2.64C1.736 0 1 .736 1 1.648v10.816c0 .912.736 1.648 1.64 1.648h9.072l-.424-1.48 1.024.952.968.896L15 16V1.648C15 .736 14.264 0 13.36 0zm-3.088 10.448s-.288-.344-.528-.648c1.048-.296 1.448-.952 1.448-.952-.328.216-.64.368-.92.472-.4.168-.784.28-1.16.344a5.604 5.604 0 0 1-2.072-.008 6.716 6.716 0 0 1-1.176-.344 4.688 4.688 0 0 1-.584-.272c-.024-.016-.048-.024-.072-.04-.016-.008-.024-.016-.032-.024-.144-.08-.224-.136-.224-.136s.384.64 1.4.944c-.24.304-.536.664-.536.664-1.768-.056-2.44-1.216-2.44-1.216 0-2.576 1.152-4.664 1.152-4.664 1.152-.864 2.248-.84 2.248-.84l.08.096c-1.44.416-2.104 1.048-2.104 1.048s.176-.096.472-.232c.856-.376 1.536-.48 1.816-.504.048-.008.088-.016.136-.016a6.521 6.521 0 0 1 4.024.752s-.632-.6-1.992-1.016l.112-.128s1.096-.024 2.248.84c0 0 1.152 2.088 1.152 4.664 0 0-.68 1.16-2.448 1.216z")
+
+
+//-                     section.profile--features
+//-                         .features--tab
+//-                             ul.features--tab__links
+//-                                 li:a.features--tab__items.active(href='#') Posts
+//-                                 li:a.features--tab__items(href='#') About
+//-                                 li:a.features--tab__items(href='#') INTERESTS
+//-                                 li:a.features--tab__items(href='#') Gallery
+//-                             button.btn.features--tab__items(href='#') Follow
+
+//-                         .features--contents 
+//-                                 img(src='/img/users/user-1-7.jpg')
+//-                                 img(src='/img/users/user-1-5.jpg')
+//-                                 img(src='/img/users/user-1-4.webp')
+//-                                 img(src='/img/users/user-1-5.jpg')
+                            
+//-                                 img(src='/img/users/user-1-3.jpg')
+//-                                 img(src='/img/users/user-1-7.jpg')
+//-                                 img(src='/img/users/user-1-8.png')
+//-                                 img(src='/img/users/user-1-5.jpg')
+
+//-     script(src="/sign.js") 
+//-     script(src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js") 
+
+
+
+
