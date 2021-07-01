@@ -31,6 +31,13 @@ app.use(xss());
 // Setting pug as default view engine
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
+
+// Implement CORS === ACCESS CONTROLL ALLOW ORIGIN - CROSS ORIGIN RESOURCE SHARING
+app.use(cors());
+
+// IMPLEMENTING CORS ON ALL URLS AND DOMAINS - making my api accessible for all domains on request
+app.use('*', cors())
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 //  Mount Routes
