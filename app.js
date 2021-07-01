@@ -11,7 +11,7 @@ const rateLimit = require('express-rate-limit');
 // const AppError = require('./utils/appError');
 const router = require('./routes/routes');
 const globalErrorHandler = require('./controllers/errorController');
-const verificationRouter = require('./routes/verificationRoute');
+const verficationController = require('./controllers/verificationController');
 const AppError = require('./utils/appError');
 
 const app = express();
@@ -28,6 +28,11 @@ const limiter = rateLimit({
 });
 app.use('/api', limiter);
 
+app.use(
+  '/verification-checkout',
+  express.raw({ type: 'application/json' }),
+  verficationController.verficiationCheckout
+);
 // Recieve data from body to req.body
 app.use(express.json({ limit: '10kb' }));
 app.use(cookieParser());
@@ -60,8 +65,6 @@ app.use((req, res, next) => {
 
 //  Mount Routes
 app.use('/', router);
-app.use('/premium', verificationRouter);
-app.use('/premium', verificationRouter);
 
 app.all('*', (req, res, next) => {
   res.redirect('/');

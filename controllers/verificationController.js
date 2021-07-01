@@ -28,9 +28,28 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.updateVerificationStatus = catchAsync(async (req, res, next) => {
-  await Users.findByIdAndUpdate(req.user.id, {
+const createVerificationSession = async (session) => {
+  const user = await Users.session.customer_email.id;
+  await Users.findByIdAndUpdate(user, {
     verified: true,
   });
-  res.redirect('/');
-});
+};
+exports.verficiationCheckout = (req, res, next) => {
+  const signature = req.headers['stripe-signature'];
+
+  let event;
+  try {
+    event = stripe.webhooks.constructEvent(
+      req.body,
+      signature,
+      process.env.STRIPE_WEBHOOK_SECRET
+    );
+  } catch (err) {
+    return res.status(400).send(`Webhook error: ${err}`);
+  }
+
+  if (event.type === 'checkout.session.completed')
+    createVerificationSession(event.data.object);
+
+  res.status(200).json({ recieved: true });
+};
