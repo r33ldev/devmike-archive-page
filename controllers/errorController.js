@@ -50,19 +50,20 @@ const sendErrorProd = (err, req, res) => {
   if (req.originalUrl.startsWith('/')) {
     // A) Operational, trusted error: send message to client
     if (err.isOperational) {
-      return res.status(err.statusCode).json({
+      res.status(err.statusCode).json({
         status: err.status,
         message: err.message,
       });
+    } else {
+      // B) Programming or other unknown error: don't leak error details
+      // 1) Log error
+      console.error('ERROR 💥', err);
+      // 2) Send generic message
+      return res.status(500).json({
+        status: 'error',
+        message: 'Something went very wrong!',
+      });
     }
-    // B) Programming or other unknown error: don't leak error details
-    // 1) Log error
-    console.error('ERROR 💥', err);
-    // 2) Send generic message
-    return res.status(500).json({
-      status: 'error',
-      message: 'Something went very wrong!',
-    });
   }
 
   // B) RENDERED WEBSITE
