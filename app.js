@@ -28,7 +28,7 @@ const limiter = rateLimit({
 });
 app.use('/api', limiter);
 
-app.use(
+app.patch(
   '/verification-checkout',
   express.raw({ type: 'application/json' }),
   verficationController.verficiationCheckout
