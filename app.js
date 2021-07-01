@@ -64,7 +64,7 @@ app.use('/premium', verificationRouter);
 app.use('/premium', verificationRouter);
 
 app.all('*', (req, res, next) => {
-  res.redirect('/me');
+  res.redirect('/');
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
