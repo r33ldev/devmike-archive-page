@@ -74,7 +74,10 @@ const signup = async (email, username, name, password, passwordConfirm) => {
       },
     });
     if (res.data.status === 'success') {
-      showAlert('success', 'Account created successfully!');
+      showAlert(
+        'success',
+        'Account created successfully! please check your email'
+      );
       window.setTimeout(() => {
         // eslint-disable-next-line no-restricted-globals
         location.assign('/');
