@@ -21,8 +21,6 @@ const stripe = Stripe(
 const paySub = async (userId) => {
   try {
     const session = await axios(`/premium/checkout-session/${userId}`);
-    // console.log(session);
-
     // Create checkout form and charge card
     await stripe.redirectToCheckout({ sessionId: session.data.session.id });
   } catch (err) {

@@ -10,10 +10,10 @@ router.get(
   verificationController.getCheckoutSession
 );
 
-router.patch(
-  '/updateVerificationStatus',
-  authController.protect,
-  verificationController.updateVerificationStatus
-);
+// router.patch(
+//   '/updateVerificationStatus',
+//   authController.protect,
+//   verificationController.updateVerificationStatus
+// );
 
 module.exports = router;

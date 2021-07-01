@@ -108,7 +108,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   }
   // if user pass.... then
   req.user = currentUser;
-  // console.log(req.user.verified);
+  console.log(req.user.verified);
 
   next();
 });

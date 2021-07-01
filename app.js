@@ -7,10 +7,12 @@ const xss = require('xss-clean');
 const compression = require('compression');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
+const bodyParser = require('body-parser');
 
 // const AppError = require('./utils/appError');
 const router = require('./routes/routes');
 const globalErrorHandler = require('./controllers/errorController');
+const verificationRouter = require('./routes/verificationRoute');
 const verficationController = require('./controllers/verificationController');
 const AppError = require('./utils/appError');
 
@@ -28,10 +30,10 @@ const limiter = rateLimit({
 });
 app.use('/api', limiter);
 
-app.patch(
-  '/verification-checkout',
-  express.raw({ type: 'application/json' }),
-  verficationController.verficiationCheckout
+app.post(
+  '/webhooks-checkout',
+  bodyParser.raw({ type: 'application/json' }),
+  verficationController.verificiationCheckout
 );
 // Recieve data from body to req.body
 app.use(express.json({ limit: '10kb' }));
@@ -59,12 +61,12 @@ app.use(compression());
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
-  // console.log(req.cookies.jwt)
   next();
 });
 
 //  Mount Routes
 app.use('/', router);
+app.use('/premium', verificationRouter);
 
 app.all('*', (req, res, next) => {
   res.redirect('/');
