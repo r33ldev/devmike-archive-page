@@ -80,8 +80,8 @@ const signup = async (email, username, name, password, passwordConfirm) => {
       }, 1500);
     }
   } catch (err) {
-    showAlert('error', err.response.message);
-    // console.log(err.message.split(':')[2].split(',')[0]);
+    showAlert('error', 'Check the form and try again');
+    console.log(err.message.split(':')[2]);
   }
 };
 
