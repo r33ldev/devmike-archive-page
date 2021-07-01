@@ -29,10 +29,8 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 });
 
 const createVerificationSession = async (session) => {
-  const user = session.customer_email;
-  await Users.findByIdAndUpdate(user.id, {
-    verified: true,
-  });
+  const user = Users.findOne(session.customer_email).id;
+  user.verified = true;
 };
 exports.verificiationCheckout = (req, res, next) => {
   const signature = req.headers['stripe-signature'];
