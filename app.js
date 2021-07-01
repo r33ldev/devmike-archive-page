@@ -6,6 +6,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const compression = require('compression');
 const cors = require('cors');
+const rateLimit = require('express-rate-limit');
 
 // const AppError = require('./utils/appError');
 const router = require('./routes/routes');
@@ -15,8 +16,17 @@ const AppError = require('./utils/appError');
 
 const app = express();
 
+app.enable('trust proxy');
+
 // Show current url with morgan
 app.use(morgan('dev'));
+
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: 'Too many requests from this IP... Try again after an hour!!!',
+});
+app.use('/api', limiter);
 
 // Recieve data from body to req.body
 app.use(express.json({ limit: '10kb' }));
@@ -36,14 +46,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(cors());
 
 // IMPLEMENTING CORS ON ALL URLS AND DOMAINS - making my api accessible for all domains on request
-app.use('*', cors());
+app.options('*', cors());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-//  Mount Routes
-app.use('/', router);
-app.use('/premium', verificationRouter);
-app.use('/premium', verificationRouter);
+app.use(compression());
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
@@ -51,7 +58,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(compression());
+//  Mount Routes
+app.use('/', router);
+app.use('/premium', verificationRouter);
+app.use('/premium', verificationRouter);
 
 app.all('*', (req, res, next) => {
   res.redirect('/me');
