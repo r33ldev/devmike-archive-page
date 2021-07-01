@@ -3,6 +3,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 // const verification = require('../models/verificationModel');
 const catchAsync = require('../utils/catchAsync');
 const Users = require('../models/userModel');
+const verification = require('../models/verificationModel');
 
 exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   const session = await stripe.checkout.sessions.create({
@@ -30,7 +31,8 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 
 const createVerificationSession = async (session) => {
   const user = Users.findOne(session.customer_email).id;
-  user.verified = true;
+  const price = session.display_items[0].amount / 100;
+  await verification.create({ user, price });
 };
 exports.verificiationCheckout = (req, res, next) => {
   const signature = req.headers['stripe-signature'];
