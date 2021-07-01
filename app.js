@@ -36,7 +36,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(cors());
 
 // IMPLEMENTING CORS ON ALL URLS AND DOMAINS - making my api accessible for all domains on request
-app.use('*', cors())
+app.use('*', cors());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
