@@ -20,9 +20,7 @@ const stripe = Stripe(
 
 const paySub = async (userId) => {
   try {
-    const session = await axios(
-      `http://127.0.0.1:3000/premium/checkout-session/${userId}`
-    );
+    const session = await axios(`/premium/checkout-session/${userId}`);
     // console.log(session);
 
     // Create checkout form and charge card
@@ -42,7 +40,7 @@ const login = async (email, password) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://127.0.0.1:3000/login',
+      url: `/login`,
       data: {
         email,
         password,
@@ -64,7 +62,7 @@ const signup = async (email, username, name, password, passwordConfirm) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://127.0.0.1:3000/create-account',
+      url: '/create-account',
       data: {
         email,
         username,
@@ -91,8 +89,8 @@ const signup = async (email, username, name, password, passwordConfirm) => {
 
 const updateSettings = async (data, type) => {
   try {
-    const url = 'http://127.0.0.1:3000/upload-photo';
-    await axios({
+    const url = '/upload-photo';
+    const res = await axios({
       method: 'PATCH',
       url,
       data,
@@ -100,10 +98,13 @@ const updateSettings = async (data, type) => {
 
     // console.log(resp);
     if (res.data.status === 'success') {
-      showAlert('success', `${type.toUpperCase()} updated successfully!`);
+      showAlert(
+        'success',
+        `${type.toUpperCase()} updated successfully! Refresh the page to see changes.`
+      );
     }
   } catch (err) {
-    showAlert('error', err.response);
+    console.log(err.response.message);
   }
 };
 
@@ -111,7 +112,7 @@ const logout = async () => {
   try {
     const res = await axios({
       method: 'GET',
-      url: 'http://127.0.0.1:3000/logout',
+      url: '/logout',
     });
     if (res.data.status === 'success') {
       showAlert('success', 'Logged out successfully!');
@@ -130,7 +131,7 @@ const goToHome = async () => {
   try {
     await axios({
       method: 'GET',
-      url: 'http://127.0.0.1:3000/',
+      url: '/',
     });
   } catch (err) {
     // if (err.reponse.data.statusCode === 501) return res.redirect('/');
@@ -147,7 +148,10 @@ const premiumBtn = document.getElementById('premium');
 
 // Upload user photo
 if (photoBtn) {
-  document.getElementById('photoLabel').addEventListener('click', (e) => {
+  document.querySelector('#photoLabel').addEventListener('click', () => {
+    document.querySelector('.btn-updatePhoto').style.display = 'inline-block';
+  });
+  photoBtn.addEventListener('submit', (e) => {
     e.preventDefault();
     const form = new FormData();
     form.append('photo', document.getElementById('photo').files[0]);

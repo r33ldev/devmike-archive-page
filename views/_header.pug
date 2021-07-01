@@ -17,7 +17,7 @@
         form#form-data 
             input(type='file', accept='image/*', id='photo', name='photo')
             label(for='photo' id='photoLabel'): img.profile-img(src=`img/users/${user.photo}`)
-                //- img.profile-img(src=`img/users/${user.photo}` id='photoImage')    
+            button(class='btn-updatePhoto' type="submit") Update
                   
         //- else 
         //-     input.form__upload(type='file', accept='image/*', id='photo', name='photo')

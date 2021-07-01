@@ -17,9 +17,7 @@ const showAlert = (type, msg, time = 7) => {
 
 const paySub = async (userId) => {
   try {
-    const session = await axios(
-      `http://127.0.0.1:3000/premium/checkout-session/${userId}`
-    );
+    const session = await axios(`/premium/checkout-session/${userId}`);
     // console.log(session);
 
     // Create checkout form and charge card

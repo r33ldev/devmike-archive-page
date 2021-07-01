@@ -253,6 +253,18 @@ section.main {
   border-radius: 1rem;
   cursor: pointer; }
 
+button.btn-updatePhoto {
+  margin-left: 2rem;
+  background-color: #0a1d37;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  padding: 0.2rem 1rem;
+  color: #f9f9f9;
+  border-radius: 1rem;
+  cursor: pointer;
+  display: none; }
+
 .body-home {
   width: 100%;
   height: 100%;
