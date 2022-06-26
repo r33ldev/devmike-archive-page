@@ -91,7 +91,7 @@ exports.createUser = catchAsync(async (req, res, next) => {
     interests: req.body.interests,
     posts: req.body.posts,
   });
-
+  console.log('newUser: ', newUser);
   res.status(200).json({
     status: 'User created successfully',
     user: {

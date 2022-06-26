@@ -1,3 +1,4 @@
+
 /* eslint-disable no-undef */
 
 const hideAlert = () => {
@@ -35,24 +36,30 @@ const emailField = document.getElementById('email');
 const passwordField = document.getElementById('password');
 
 const login = async (email, password) => {
+ 
+    console.log('gitres: ', 'res');
   try {
-    const res = await axios({
+    await axios({
       method: 'POST',
       url: `/login`,
       data: {
         email,
         password,
       },
+    }).then((res) => {
+      if (res.data.status === 'success') {
+        showAlert('success', 'Logged in successfully!');
+        window.setTimeout(() => {
+          // eslint-disable-next-line no-restricted-globals
+          location.assign('/');
+        }, 1500);
+      }
     });
-    if (res.data.status === 'success') {
-      showAlert('success', 'Logged in successfully!');
-      window.setTimeout(() => {
-        // eslint-disable-next-line no-restricted-globals
-        location.assign('/');
-      }, 1500);
-    }
   } catch (error) {
-    showAlert('error', 'Incorrect Password or email!');
+    showAlert(
+      'error',
+      'Incorrect Password or email or something bad went wrong!'
+    );
   }
 };
 
@@ -69,6 +76,7 @@ const signup = async (email, username, name, password, passwordConfirm) => {
         passwordConfirm,
       },
     });
+
     if (res.data.status === 'success') {
       showAlert(
         'success',
@@ -125,17 +133,17 @@ const logout = async () => {
   }
 };
 
-const goToHome = async () => {
-  try {
-    await axios({
-      method: 'GET',
-      url: '/',
-    });
-  } catch (err) {
-    // if (err.reponse.data.statusCode === 501) return res.redirect('/');
-    console.log(err.response.data.message);
-  }
-};
+// const goToHome = async () => {
+//   try {
+//     await axios({
+//       method: 'GET',
+//       url: '/',
+//     });
+//   } catch (err) {
+//     // if (err.reponse.data.statusCode === 501) return res.redirect('/');
+//     console.log(err.response.data.message);
+//   }
+// };
 
 const btnLogin = document.getElementById('btn-rock');
 const btnSignup = document.getElementById('btn-signup');
