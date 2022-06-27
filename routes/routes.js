@@ -13,8 +13,6 @@ router.get('/logout', authController.logout);
 router.use(authController.isLoggedIn);
 
 router.get('/', authController.protect, (req, res) => {
-  // if (!req.cookies.jwt) return res.redirect('/login');
-
   res.status(200).render('post', {});
 });
 router.get('/login', (req, res) => {
